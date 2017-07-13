@@ -10,7 +10,6 @@
     "jasmine-check": "^1.0.0-rc.0",
     "jest": "^20.0.4",
     "nodemon": "^1.11.0",
-    "redux-devtools-extension": "^2.13.2",
     "testcheck": "^1.0.0-rc.2",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2",
