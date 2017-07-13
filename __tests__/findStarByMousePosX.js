@@ -3,14 +3,12 @@ import findStarByMousePosX from '../utils/findStarByMousePosX';
 
 const width = 260;
 
-const stars = [1, 2, 3, 4, 5].reduce(function (acc, curr) {
+const stars = [1, 2, 3, 4, 5].reduce(function (acc, curr, _, array) {
     acc.push({
         rating: curr,
         domRef: '.rating-' + curr,
-        // left boundary included, right boundary excluded
-        // boundaries: [ratingContainer.clientWidth / 5 * (curr - 1), ratingContainer.clientWidth / 5 * curr - 1]
-        left: (width / 5) * (curr - 1), // left boundary included
-        right: (width / 5) * curr - 1 // right boundary excluded
+        left: width / array.length * (curr - 1), // left boundary included
+        right: curr ===  array.length ? width / array.length * curr: width / array.length * curr - 1 // right boundary excluded (except the very last interval)
     });
     return acc;
 }, []);
