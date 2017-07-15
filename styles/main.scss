@@ -11,8 +11,8 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
   .review-container {
     height: 300px;
     width: 100% / $containers-per-row;
-    //border: 1px dashed red;
-    opacity: 1; // TODO: turn to 0 and make appear on mounting
+
+    opacity: 0;
     transition-property: opacity;
     transition-timing-function: linear;
     transition-duration: 1s;
