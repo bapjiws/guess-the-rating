@@ -83,7 +83,17 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                     options: {
-                        name: 'assets/fonts/[name].[ext]'
+                        name: '[path][name].[hash].[ext]'
+                    }
+                }
+            },
+
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[hash].[ext]'
                     }
                 }
             }
