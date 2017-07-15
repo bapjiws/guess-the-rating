@@ -2,8 +2,10 @@ import React from 'react';
 
 import Reviews from './Reviews';
 
+import main from '../../styles/main.scss';
+
 const App = () => <div>
-    <h1 style={{textAlign: 'center'}}>Guess the Rating!</h1>
+    <div style={{textAlign: 'center'}}>Guess the Rating!</div>
     <Reviews />
 </div>;
 
