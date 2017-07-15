@@ -60,7 +60,8 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 include: [
-                    path.join(__dirname, "/src")
+                    path.join(__dirname, "/src"),
+                    path.join(__dirname, "/utils")
                 ],
                 // React Hot Loader should be automatically disabled in production.
                 use: ['react-hot-loader/webpack', 'babel-loader']

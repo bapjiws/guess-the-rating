@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 
-import portrait from '../../assets/images/reviewers/erika-wolfe.png';
-import ratingOne from '../../assets/images/stars/1-star-260x48.png';
-import ratingTwo from '../../assets/images/stars/2-stars-260x48.png';
-import ratingThree from '../../assets/images/stars/3-stars-260x48.png';
-import ratingFour from '../../assets/images/stars/4-stars-260x48.png';
-import ratingFive from '../../assets/images/stars/5-stars-260x48.png';
+import importAll from '../../utils/importAll';
+
+const ratings = importAll(require.context('../../assets/images/stars', false, /\.(jpe?g|png|gif|svg)$/));
+const reviewerPortraits = importAll(require.context('../../assets/images/reviewers', false, /\.(jpe?g|png|gif|svg)$/));
 
 export default class Reviews extends Component {
 
     render() {
         return <div className="review-container">
             <div className="review-header">
-                <img className="review-portrait" src={portrait} alt=""/>
+                <img className="review-portrait" src={reviewerPortraits[0]} alt=""/>
                 <div className="review-rating">
                     <div className="review-author">Erika Wolfe from Gothenburg, SE, gave:</div>
                     <div className="rating-container">
-                        <img className="rating-1" src={ratingOne}/>
-                        <img className="rating-2" src={ratingTwo}/>
-                        <img className="rating-3" src={ratingThree}/>
-                        <img className="rating-4" src={ratingFour}/>
-                        <img className="rating-5" src={ratingFive}/>
+                        <img className="rating-1" src={ratings[1]}/>
+                        <img className="rating-2" src={ratings[2]}/>
+                        <img className="rating-3" src={ratings[3]}/>
+                        <img className="rating-4" src={ratings[4]}/>
+                        <img className="rating-5" src={ratings[5]}/>
                     </div>
                 </div>
             </div>
