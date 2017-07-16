@@ -8,21 +8,29 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            score: 0
+            score: 0,
+            numOfGuesses: 0
         };
-        this.increaseScore = this.increaseScore.bind(this);
+        this.updateScore = this.updateScore.bind(this);
     }
 
-    increaseScore() {
-        this.setState((prevState, props) => ({
-            score: prevState.score + 1
-        }))
+    updateScore(missed = false) {
+        if (!missed) {
+            this.setState((prevState, props) => ({
+                score: prevState.score + 1,
+                numOfGuesses: prevState.numOfGuesses + 1
+            }))
+        } else {
+            this.setState((prevState, props) => ({
+                numOfGuesses: prevState.numOfGuesses + 1
+            }))
+        }
     }
 
     render() {
         return <div>
-            <div style={{textAlign: 'center'}}>Score: {this.state.score}</div>
-            <Reviews increaseScore={this.increaseScore}/>
+            <div style={{textAlign: 'center'}}>{`Your score is: ${this.state.score} / ${this.state.numOfGuesses}`}</div>
+            <Reviews updateScore={this.updateScore}/>
         </div>
     }
 };

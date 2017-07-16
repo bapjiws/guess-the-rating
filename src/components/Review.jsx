@@ -70,9 +70,7 @@ export default class Review extends Component {
         // console.log('Score:', this.props.review.starRating, this.state.currentStar+1);
         // console.log('types:', typeof this.props.review.starRating, typeof this.state.currentStar);
         // TODO: find a better way than casting -- wait until TS is in play
-        if (+this.props.review.starRating === this.state.currentStar+1) {
-            this.props.increaseScore();
-        }
+        this.props.updateScore(+this.props.review.starRating !== this.state.currentStar+1);
 
         // Another option might be https://github.com/JedWatson/classnames
         this.ratingContainerRef.className += ' clicked';

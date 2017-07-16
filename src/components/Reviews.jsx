@@ -17,7 +17,7 @@ const Reviews = (props) => (
                 ratings={ratings}
                 appearanceDelay={idx + 1}
                 review={review}
-                increaseScore={props.increaseScore}
+                updateScore={props.updateScore}
             />)
         }
     </div>
