@@ -20,6 +20,7 @@ const Reviews = () => (
                 location={review.location}
                 reviewTitle={review.reviewTitle}
                 reviewBody={review.reviewBody}
+                starRating={review.starRating}
             />)
         }
     </div>

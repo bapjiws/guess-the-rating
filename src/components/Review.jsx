@@ -114,7 +114,7 @@ export default class Review extends Component {
                             })
                         }
                         <img
-                            src={ratings[4]}
+                            src={ratings[this.props.starRating-1]}
                             ref={ref => this.realRatingRef = ref}
                             className="real-rating"
                         />
