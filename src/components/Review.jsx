@@ -67,12 +67,12 @@ export default class Review extends Component {
                 <img className="review-portrait" src={reviewerPortrait} alt=""/>
                 <div className="review-rating">
                     <div className="review-author">Erika Wolfe from Gothenburg, SE, gave:</div>
-                    <div ref={div => this.ratingContainerRef = div} className="rating-container" onMouseMove={this.handleMouseMove}>
+                    <div ref={ref => this.ratingContainerRef = ref} className="rating-container" onMouseMove={this.handleMouseMove}>
                         {
                             ratings.map((rating, idx) => {
                                 return <img
                                     key={idx}
-                                    ref={img => this.ratingRefs[idx] = img}
+                                    ref={ref => this.ratingRefs[idx] = ref}
                                     className={`rating-${idx + 1}`}
                                     src={rating}
                                 />
