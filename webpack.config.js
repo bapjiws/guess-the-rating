@@ -61,7 +61,8 @@ module.exports = {
                 test: /\.jsx?$/,
                 include: [
                     path.join(__dirname, "/src"),
-                    path.join(__dirname, "/utils")
+                    path.join(__dirname, "/utils"),
+                    path.join(__dirname, "/assets") // TODO: remove when have data from the API
                 ],
                 // React Hot Loader should be automatically disabled in production.
                 use: ['react-hot-loader/webpack', 'babel-loader']
