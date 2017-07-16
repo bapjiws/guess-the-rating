@@ -6,6 +6,8 @@ export default class Review extends Component {
     constructor(props) {
         super(props);
 
+        this.appearanceTimer = null;
+        this.reviewContainerRef = null;
         this.ratingContainerRef = null;
         this.ratingRefs = new Array(props.ratings.length);
 
@@ -17,21 +19,29 @@ export default class Review extends Component {
     }
 
     componentDidMount() {
-        // console.log('this.ratingRefs:', this.ratingRefs);
-        const ratingContainerWidth = this.ratingContainerRef.clientWidth;
-        // console.log('ratingContainerWidth:', ratingContainerWidth);
-        const stars = [1, 2, 3, 4, 5].reduce((acc, curr, idx, array) => {
-            acc.push({
-                rating: curr,
-                domRef: this.ratingRefs[idx],
-                left: ratingContainerWidth / array.length * (curr - 1), // left boundary included
-                right: curr ===  array.length ? ratingContainerWidth / array.length * curr: ratingContainerWidth / array.length * curr - 1 // right boundary excluded (except the very last interval)
-            });
-            return acc;
-        }, []);
-        console.log('stars:', stars);
+        this.appearanceTimer = setTimeout(() => {
+            this.reviewContainerRef.style.opacity = 1;
 
-        this.setState({ stars });
+            // console.log('this.ratingRefs:', this.ratingRefs);
+            const ratingContainerWidth = this.ratingContainerRef.clientWidth;
+            // console.log('ratingContainerWidth:', ratingContainerWidth);
+            const stars = [1, 2, 3, 4, 5].reduce((acc, curr, idx, array) => {
+                acc.push({
+                    rating: curr,
+                    domRef: this.ratingRefs[idx],
+                    left: ratingContainerWidth / array.length * (curr - 1), // left boundary included
+                    right: curr ===  array.length ? ratingContainerWidth / array.length * curr: ratingContainerWidth / array.length * curr - 1 // right boundary excluded (except the very last interval)
+                });
+                return acc;
+            }, []);
+            // console.log('stars:', stars);
+
+            this.setState({ stars });
+        }, 500 * this.props.appearanceDelay); // TODO: set to 500 when finished debugging
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.appearanceTimer);
     }
 
     handleMouseMove(event) {
@@ -62,7 +72,7 @@ export default class Review extends Component {
     render() {
         const { reviewerPortrait, ratings } = this.props;
 
-        return <div className="review-container">
+        return <div ref={ref => this.reviewContainerRef = ref} className="review-container">
             <div className="review-header">
                 <img className="review-portrait" src={reviewerPortrait} alt=""/>
                 <div className="review-rating">
