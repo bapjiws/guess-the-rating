@@ -60,9 +60,9 @@ export default class Review extends Component {
                         star.domRef.style.zIndex = 0;
                     }
                     return star;
-                })
+                }),
+                currentStar: newStar
             }));
-            this.setState({ currentStar: newStar });
         }
     };
 
