@@ -7,7 +7,7 @@ export default class Review extends Component {
         super(props);
 
         this.ratingContainerRef = null;
-        this.ratingRefs = Array(props.ratings.length);
+        this.ratingRefs = new Array(props.ratings.length);
 
         this.state = {
             stars: [],
