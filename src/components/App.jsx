@@ -29,7 +29,13 @@ export default class App extends Component {
 
     render() {
         return <div>
-            <div style={{textAlign: 'center'}}>{`Your score is: ${this.state.score} / ${this.state.numOfGuesses}`}</div>
+            <div style={{textAlign: 'center'}}>
+                {
+                    !this.state.numOfGuesses ?
+                        'Guess people\'s ratings based on their reviews!' :
+                        `Your score is: ${this.state.score} / ${this.state.numOfGuesses}`
+                }
+            </div>
             <Reviews updateScore={this.updateScore}/>
         </div>
     }
