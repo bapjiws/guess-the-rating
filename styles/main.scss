@@ -49,6 +49,9 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
           transition-duration: 1s;
           transition-timing-function: linear;
 
+          &.clicked {
+            transform: rotateY(180deg);
+          }
 
           img { // size: 260 x 48
             position: absolute;
@@ -63,6 +66,10 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
             &.real-rating {
               transform: rotateY(180deg);
               color: white;
+
+              &.clicked {
+                backface-visibility: visible;
+              }
             }
 
           }

@@ -67,9 +67,9 @@ export default class Review extends Component {
     };
 
     handleClick(event) {
-        // TODO: add (if possible) vendor prefixes
-        this.ratingContainerRef.style.transform = 'rotateY(180deg)';
-        this.realRatingRef.style.backfaceVisibility = 'visible';
+        // Another option might be https://github.com/JedWatson/classnames
+        this.ratingContainerRef.className += ' clicked';
+        this.realRatingRef.className += ' clicked';
     };
 
     // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions#Detecting_the_completion_of_a_transition
