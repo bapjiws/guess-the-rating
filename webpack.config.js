@@ -73,10 +73,24 @@ module.exports = {
                 // No Hot Module Replacement with ExtractTextPlugin: https://github.com/webpack-contrib/extract-text-webpack-plugin
                 use: inProductionMode ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
+                    use: ['css-loader', {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: (loader) => [
+                                require('autoprefixer')()
+                            ]
+                        }
+                    }, 'sass-loader']
                 }) : ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader'],
+                    use: ['css-loader', {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: (loader) => [
+                                require('autoprefixer')()
+                            ]
+                        }
+                    }, 'sass-loader'],
                 }))
             },
 
