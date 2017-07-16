@@ -117,7 +117,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.jsx', '.js', '.scss'],
+        extensions: ['.jsx', '.js'],
         modules: [path.join(__dirname, 'src'), 'node_modules']
     },
 
