@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Review from './Review';
-import importAll from '../../utils/importAll';
+import { importAllAsArray, importAllAsObject, generatePortraitKey} from '../../utils/importAll';
 
 import reviews from '../../assets/reviews';
-const ratings = importAll(require.context('../../assets/images/stars', false, /\.(jpe?g|png|gif|svg)$/));
-const reviewerPortraits = importAll(require.context('../../assets/images/reviewers', false, /\.(jpe?g|png|gif|svg)$/));
+const ratings = importAllAsArray(require.context('../../assets/images/stars', false, /\.(jpe?g|png|gif|svg)$/));
+const reviewerPortraits = importAllAsObject(require.context('../../assets/images/reviewers', false, /\.(jpe?g|png|gif|svg)$/));
 
 const Reviews = () => (
     <div className="reviews-container">
@@ -13,7 +13,7 @@ const Reviews = () => (
             // TODO: correctly bind reviews to portraits
             reviews.map((review, idx) => <Review
                 key={idx}
-                reviewerPortrait={reviewerPortraits[idx]}
+                reviewerPortrait={reviewerPortraits[generatePortraitKey(review, 'png')]}
                 ratings={ratings}
                 appearanceDelay={idx + 1}
                 fullName={review.fullName}

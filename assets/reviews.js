@@ -18,9 +18,9 @@ const reviews = [
         "starRating": "4"
     },
     {
-        "firstName": "Justin",
+        "firstName": "Jason",
         "lastName": "Wright",
-        "fullName": "Justin Wright",
+        "fullName": "Jason Wright",
         "location": "London, GB",
         "reviewTitle": "Good Services",
         "reviewBody": "A decent place to introduce your taste buds to fiery Indian fare",
