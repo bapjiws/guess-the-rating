@@ -73,11 +73,8 @@ export default class Review extends Component {
     };
 
     // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions#Detecting_the_completion_of_a_transition
-    // TODO: disable handleMouseMove
     handleTransitionEnd(event) {
-        // console.log('handleTransitionEnd', event.propertyName, event.elapsedTime);
-        // this.ratingRefs.forEach(rating => rating.style.opacity = 0);
-        // this.realRatingRef.style.zIndex = 2;
+        this.handleMouseMove = null;
     }
 
     render() {
