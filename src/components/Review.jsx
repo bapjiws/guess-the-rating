@@ -81,7 +81,7 @@ export default class Review extends Component {
     }
 
     render() {
-        const { reviewerPortrait, ratings } = this.props;
+        const { reviewerPortrait, ratings, review: { fullName, location, reviewTitle, reviewBody, starRating } } = this.props;
 
         return <div
             ref={ref => this.reviewContainerRef = ref}
@@ -92,8 +92,8 @@ export default class Review extends Component {
                 <div className="review-rating">
                     <div className="review-author">
                         {
-                            this.props.location ? `${this.props.fullName} from ${this.props.location} gave:` :
-                                `${this.props.fullName} gave:`
+                            location ? `${fullName} from ${location} gave:` :
+                                `${fullName} gave:`
                         }
                     </div>
                     <div
@@ -114,15 +114,15 @@ export default class Review extends Component {
                             })
                         }
                         <img
-                            src={ratings[this.props.starRating-1]}
+                            src={ratings[starRating-1]}
                             ref={ref => this.realRatingRef = ref}
                             className="real-rating"
                         />
                     </div>
                 </div>
             </div>
-            <div className="review-title">{this.props.reviewTitle}</div>
-            <div className="review-body">{this.props.reviewBody}</div>
+            <div className="review-title">{reviewTitle}</div>
+            <div className="review-body">{reviewBody}</div>
         </div>
     }
 };

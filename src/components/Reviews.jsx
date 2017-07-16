@@ -16,11 +16,7 @@ const Reviews = () => (
                 reviewerPortrait={reviewerPortraits[generatePortraitKey(review, 'png')]}
                 ratings={ratings}
                 appearanceDelay={idx + 1}
-                fullName={review.fullName}
-                location={review.location}
-                reviewTitle={review.reviewTitle}
-                reviewBody={review.reviewBody}
-                starRating={review.starRating}
+                review={review}
             />)
         }
     </div>
