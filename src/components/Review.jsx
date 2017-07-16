@@ -67,6 +67,7 @@ export default class Review extends Component {
     };
 
     handleClick(event) {
+        // TODO: add (if possible) vendor prefixes
         this.ratingContainerRef.style.transform = 'rotateY(180deg)';
         this.realRatingRef.style.backfaceVisibility = 'visible';
     };
