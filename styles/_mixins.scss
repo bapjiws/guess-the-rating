@@ -3,3 +3,12 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin animated-border-color($border-color) {
+  border: 2px solid $border-color;
+  border-radius: 4px;
+
+  transition-property: border;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}

@@ -67,9 +67,8 @@ export default class Review extends Component {
     };
 
     handleClick(event) {
-        // console.log('Score:', this.props.review.starRating, this.state.currentStar+1);
-        // console.log('types:', typeof this.props.review.starRating, typeof this.state.currentStar);
         // TODO: find a better way than casting -- wait until TS is in play
+        this.handleMouseMove = null;
         this.props.updateScore(+this.props.review.starRating !== this.state.currentStar+1);
 
         // Another option might be https://github.com/JedWatson/classnames
@@ -79,7 +78,12 @@ export default class Review extends Component {
 
     // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions#Detecting_the_completion_of_a_transition
     handleTransitionEnd(event) {
-        this.handleMouseMove = null;
+        // Another option might be https://github.com/JedWatson/classnames
+        if (+this.props.review.starRating !== this.state.currentStar+1) {
+            this.ratingContainerRef.className += ' incorrect-guess';
+        } else {
+            this.ratingContainerRef.className += ' correct-guess';
+        }
     }
 
     render() {

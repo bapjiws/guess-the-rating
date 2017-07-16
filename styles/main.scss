@@ -57,8 +57,18 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
           transition-duration: 1s;
           transition-timing-function: linear;
 
+          border: 2px solid white;
+
           &.clicked {
             transform: rotateY(180deg);
+          }
+
+          &.incorrect-guess {
+            @include animated-border-color(red);
+          }
+
+          &.correct-guess {
+            @include animated-border-color(blue);
           }
 
           img { // size: 260 x 48
@@ -113,5 +123,5 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
 }
 
 * {
-  border: 1px solid red;
+  //border: 1px solid red;
 }
