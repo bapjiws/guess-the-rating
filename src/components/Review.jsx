@@ -49,22 +49,17 @@ export default class Review extends Component {
         // console.log('currentStar, newStar:', this.state.currentStar, newStar);
         if (newStar !== this.state.currentStar) {
             console.log('RESTACKING...');
-            // const newStars = this.state.stars.slice();
-            // newStars.forEach(star => {
-            //     if (star.rating === (newStar + 1)) {
-            //         star.domRef.style.zIndex = 1;
-            //     } else {
-            //         star.domRef.style.zIndex = 0;
-            //     }
-            // });
-            this.setState({ stars: this.state.stars.map(star => {
-                if (star.rating === (newStar + 1)) {
-                    star.domRef.style.zIndex = 1;
-                } else {
-                    star.domRef.style.zIndex = 0;
-                }
-                return star;
-            })});
+
+            this.setState((prevState, props) => ({
+                stars: prevState.stars.map(star => {
+                    if (star.rating === (newStar + 1)) {
+                        star.domRef.style.zIndex = 1;
+                    } else {
+                        star.domRef.style.zIndex = 0;
+                    }
+                    return star;
+                })
+            }));
             this.setState({ currentStar: newStar });
         }
     };
