@@ -4,6 +4,14 @@
 $containers-per-row: 4;
 $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
 
+.game-info {
+  height: 50px;
+
+  @include flexbox-with-centered-content;
+  font-family: $font-stack;
+  font-size: 18px;
+}
+
 .reviews-container {
   display: flex;
   flex-wrap: wrap;
@@ -28,12 +36,12 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
       }
 
       .review-rating {
-        @include flexbox-with-centered-contents;
+        @include flexbox-with-centered-content;
         flex-wrap: wrap;
 
         .review-author {
           width: 100%;
-          @include flexbox-with-centered-contents;
+          @include flexbox-with-centered-content;
           font-family: $font-stack;
         }
 

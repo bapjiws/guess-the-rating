@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GameInfo = props => (
-    <div style={{textAlign: 'center'}}>
+    <div className="game-info">
         {
             !props.numOfGuesses ?
                 'Guess people\'s ratings based on their reviews!' :
