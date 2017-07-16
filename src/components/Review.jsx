@@ -16,6 +16,8 @@ export default class Review extends Component {
             currentStar: 0
         };
         this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     }
 
     componentDidMount() {
@@ -37,7 +39,7 @@ export default class Review extends Component {
             // console.log('stars:', stars);
 
             this.setState({ stars });
-        }, 500 * this.props.appearanceDelay); // TODO: set to 500 when finished debugging
+        }, 100 * this.props.appearanceDelay); // TODO: set to 500 when finished debugging
     }
 
     componentWillUnmount() {
@@ -46,7 +48,7 @@ export default class Review extends Component {
 
     handleMouseMove(event) {
         let newStar = findStarByMousePosX(event.nativeEvent.offsetX, this.state.stars);
-        // console.log('currentStar, newStar:', this.state.currentStar, newStar);
+        // console.log('posX, currentStar, newStar:', event.nativeEvent.offsetX, this.state.currentStar, newStar);
         if (newStar !== this.state.currentStar) {
             console.log('RESTACKING...');
 
@@ -64,15 +66,37 @@ export default class Review extends Component {
         }
     };
 
+    handleClick(event) {
+        this.ratingContainerRef.style.transform = 'rotateY(180deg)';
+        this.realRatingRef.style.backfaceVisibility = 'visible';
+    };
+
+    // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions#Detecting_the_completion_of_a_transition
+    // TODO: disable handleMouseMove
+    handleTransitionEnd(event) {
+        // console.log('handleTransitionEnd', event.propertyName, event.elapsedTime);
+        // this.ratingRefs.forEach(rating => rating.style.opacity = 0);
+        // this.realRatingRef.style.zIndex = 2;
+    }
+
     render() {
         const { reviewerPortrait, ratings } = this.props;
 
-        return <div ref={ref => this.reviewContainerRef = ref} className="review-container">
+        return <div
+            ref={ref => this.reviewContainerRef = ref}
+            className="review-container"
+        >
             <div className="review-header">
                 <img className="review-portrait" src={reviewerPortrait} alt=""/>
                 <div className="review-rating">
                     <div className="review-author">Erika Wolfe from Gothenburg, SE, gave:</div>
-                    <div ref={ref => this.ratingContainerRef = ref} className="rating-container" onMouseMove={this.handleMouseMove}>
+                    <div
+                        ref={ref => this.ratingContainerRef = ref}
+                        className="rating-container"
+                        onMouseMove={this.handleMouseMove}
+                        onClick={this.handleClick}
+                        onTransitionEnd={this.handleTransitionEnd}
+                    >
                         {
                             ratings.map((rating, idx) => {
                                 return <img
@@ -83,6 +107,11 @@ export default class Review extends Component {
                                 />
                             })
                         }
+                        <img
+                            src={ratings[4]}
+                            ref={ref => this.realRatingRef = ref}
+                            className="real-rating"
+                        />
                     </div>
                 </div>
             </div>
