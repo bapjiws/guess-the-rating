@@ -7,7 +7,7 @@ import reviews from '../../assets/reviews';
 const ratings = importAllAsArray(require.context('../../assets/images/stars', false, /\.(jpe?g|png|gif|svg)$/));
 const reviewerPortraits = importAllAsObject(require.context('../../assets/images/reviewers', false, /\.(jpe?g|png|gif|svg)$/));
 
-const Reviews = () => (
+const Reviews = (props) => (
     <div className="reviews-container">
         {
             // TODO: correctly bind reviews to portraits
@@ -17,6 +17,7 @@ const Reviews = () => (
                 ratings={ratings}
                 appearanceDelay={idx + 1}
                 review={review}
+                increaseScore={props.increaseScore}
             />)
         }
     </div>
