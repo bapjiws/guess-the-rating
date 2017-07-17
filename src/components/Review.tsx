@@ -31,7 +31,7 @@ export default class Review extends Component<IReviewProps, IReviewState> {
         reviewContainerRef?: HTMLDivElement;
         ratingContainerRef?: HTMLDivElement;
         realRatingRef?: HTMLImageElement;
-    };
+    } = {};
 
     private ratingRefs: Array<HTMLImageElement> = new Array(this.props.ratings.length);
     private appearanceTimer: number;
