@@ -16,15 +16,6 @@ interface IReviewState {
 }
 
 export default class Review extends Component<IReviewProps, IReviewState> {
-    domRefs: {
-        reviewContainerRef?: HTMLDivElement;
-        ratingContainerRef?: HTMLDivElement;
-        realRatingRef?: HTMLImageElement;
-    };
-
-    private ratingRefs: Array<HTMLImageElement> = new Array(this.props.ratings.length);
-    private appearanceTimer: number;
-
     constructor(props: IReviewProps) {
         super(props);
         this.state = {
@@ -35,6 +26,15 @@ export default class Review extends Component<IReviewProps, IReviewState> {
         this.handleClick = this.handleClick.bind(this);
         this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     }
+
+    private domRefs: {
+        reviewContainerRef?: HTMLDivElement;
+        ratingContainerRef?: HTMLDivElement;
+        realRatingRef?: HTMLImageElement;
+    };
+
+    private ratingRefs: Array<HTMLImageElement> = new Array(this.props.ratings.length);
+    private appearanceTimer: number;
 
     componentDidMount() {
         this.appearanceTimer = setTimeout(() => {
