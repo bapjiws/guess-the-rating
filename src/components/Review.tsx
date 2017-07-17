@@ -6,10 +6,16 @@ interface IReviewProps {
     reviewerPortrait: string // {[key: string]: string}
     ratings: Array<string>
     appearanceDelay: number
-    review: {[key: string]: string} // TODO: starRating field should ideally be a number
+    review: {
+        firstName: string,
+        lastName: string,
+        fullName: string,
+        location: string,
+        reviewTitle: string,
+        reviewBody: string,
+        starRating: number
+    }
     updateScore: (missed: boolean) => void
-
-    // appearanceTimer: string
 }
 
 interface IReviewState {
@@ -93,9 +99,8 @@ export default class Review extends Component<IReviewProps, IReviewState> {
     };
 
     handleClick(event: any) {
-        // TODO: find a better way than casting -- wait until TS is in play
         this.handleMouseMove = (event: any): void => {};
-        this.props.updateScore(+this.props.review.starRating !== this.state.currentStar+1);
+        this.props.updateScore(this.props.review.starRating !== this.state.currentStar+1);
 
         // Another option might be https://github.com/JedWatson/classnames
         if (this.domRefs.ratingContainerRef) {this.domRefs.ratingContainerRef.className += ' clicked'};
@@ -145,9 +150,8 @@ export default class Review extends Component<IReviewProps, IReviewState> {
                                 />
                             })
                         }
-                        {/*TODO: make starRating a number to avoid +starRating-1*/}
                         <img
-                            src={ratings[+starRating-1]}
+                            src={ratings[starRating-1]}
                             ref={(ref:any) => this.domRefs.realRatingRef = ref}
                             className="real-rating"
                         />
