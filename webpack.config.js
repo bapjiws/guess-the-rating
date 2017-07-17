@@ -60,22 +60,22 @@ module.exports = {
             // https://github.com/s-panferov/awesome-typescript-loader
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript-loader",
-                options: {
-                    "useBabel": true,
-                    "useCache": true
-                }
-            },
-
-            {
-                test: /\.jsx?$/,
                 include: [
                     path.join(__dirname, "/src"),
                     path.join(__dirname, "/utils"),
                     path.join(__dirname, "/assets") // TODO: remove when have data from the API
                 ],
-                // React Hot Loader should be automatically disabled in production.
-                use: ['react-hot-loader/webpack', 'babel-loader']
+                use: [
+                    'react-hot-loader/webpack',
+                    {
+                        loader: "awesome-typescript-loader",
+                        options: {
+                            "useBabel": true,
+                            "useCache": true
+                        }
+                    },
+                    'babel-loader'
+                ]
             },
 
             {
