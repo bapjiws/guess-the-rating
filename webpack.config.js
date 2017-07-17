@@ -42,12 +42,12 @@ if (inProductionMode) {
 
 module.exports = {
     entry: inProductionMode ? {
-        bundle: './src/index.js',
-        vendor: ['react', 'react-dom']
+        bundle: './src/index.tsx',
+        vendor: ['react', 'react-dom'] // TODO: add more stuff here, e.g., typescript
     } : [
         'react-hot-loader/patch',
         'webpack-hot-middleware/client',
-        './src/index.js'
+        './src/index.tsx'
     ],
 
     output: {
@@ -57,6 +57,16 @@ module.exports = {
 
     module: {
         rules: [
+            // https://github.com/s-panferov/awesome-typescript-loader
+            {
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader",
+                options: {
+                    "useBabel": true,
+                    "useCache": true
+                }
+            },
+
             {
                 test: /\.jsx?$/,
                 include: [
@@ -112,12 +122,19 @@ module.exports = {
                         name: '[path][name].[hash].[ext]'
                     }
                 }
+            },
+
+            // https://github.com/webpack-contrib/source-map-loader
+            {
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
             }
         ]
     },
 
     resolve: {
-        extensions: ['.jsx', '.js'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         modules: [path.join(__dirname, 'src'), 'node_modules']
     },
 

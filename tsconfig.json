@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "es6", // use ES2015 modules
+    "target": "es6", // compile to ES2015 (Babel will do the rest)
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src", // enables you to import relative to this folder (probably don't need this one)
+    "sourceMap": true,
+    "outDir": "ts-build", // output directory to build to (irrelevant because we use Webpack most of the time)
+    "jsx": "preserve", // enable JSX mode, but "preserve" tells TypeScript to not transform it (we'll use Babel)
+    "noImplicitAny": true,
+    "strict": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
