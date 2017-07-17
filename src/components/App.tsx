@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import Reviews from './Reviews';
 import GameInfo from './GameInfo';
-//
-// import main from '../../styles/main.scss';
+
+import '../../styles/main.scss';
 
 interface IAppProps {}
 
