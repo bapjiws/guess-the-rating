@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es6", // use ES2015 modules
-    "target": "es6", // compile to ES2015 (Babel will do the rest)
+    "module": "es6",
+    "target": "es6",
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src", // enables you to import relative to this folder (probably don't need this one)
     "sourceMap": true,

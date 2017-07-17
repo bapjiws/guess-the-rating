@@ -8,6 +8,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-hot-loader@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-hot-loader/-/react-hot-loader-3.0.3.tgz#ee02b1999c22713418e198cc3eb090b7e76ce592"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^15.0.38":
   version "15.0.38"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.38.tgz#6afea31a9fe66304af474106ba372ddaba449995"
