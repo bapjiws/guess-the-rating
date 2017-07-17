@@ -6,15 +6,7 @@ interface IReviewProps {
     reviewerPortrait: string // {[key: string]: string}
     ratings: Array<string>
     appearanceDelay: number
-    review: {
-        firstName: string,
-        lastName: string,
-        fullName: string,
-        location: string,
-        reviewTitle: string,
-        reviewBody: string,
-        starRating: number
-    }
+    review: IReview
     updateScore: (missed: boolean) => void
 }
 
