@@ -67,14 +67,14 @@ module.exports = {
                 ],
                 use: [
                     'react-hot-loader/webpack',
+                    'babel-loader',
                     {
                         loader: "awesome-typescript-loader",
                         options: {
                             "useBabel": true,
                             "useCache": true
                         }
-                    },
-                    'babel-loader'
+                    }
                 ]
             },
 
