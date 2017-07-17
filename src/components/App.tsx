@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 
 import Reviews from './Reviews';
 import GameInfo from './GameInfo';
+//
+// import main from '../../styles/main.scss';
 
-import main from '../../styles/main.scss';
+interface IAppProps {}
 
-export default class App extends Component {
-    constructor(props) {
+interface IAppState {
+    score: number,
+    numOfGuesses: number
+}
+
+export default class App extends Component<IAppProps, IAppState> {
+    constructor(props: IAppProps) {
         super(props);
         this.state = {
             score: 0,

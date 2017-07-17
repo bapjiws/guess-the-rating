@@ -1,6 +1,11 @@
 import React from 'react';
 
-const GameInfo = props => (
+interface IGameInfoProps {
+    score: number,
+    numOfGuesses: number
+}
+
+const GameInfo = (props:IGameInfoProps) => (
     <div className="game-info">
         {
             !props.numOfGuesses ?

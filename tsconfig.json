@@ -7,8 +7,7 @@
     "sourceMap": true,
     "outDir": "ts-build", // output directory to build to (irrelevant because we use Webpack most of the time)
     "jsx": "preserve", // enable JSX mode, but "preserve" tells TypeScript to not transform it (we'll use Babel)
-    "noImplicitAny": true,
-    "strict": true
+    "strict": true // Raises, among others, strictNullChecks and noImplicitAny flags
   },
   "include": [
     "./src/**/*"

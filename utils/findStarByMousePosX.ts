@@ -1,4 +1,5 @@
-const findStarByMousePosX = (mousePosX, stars) => {
+// TODO: domRef is not any)
+const findStarByMousePosX = (mousePosX: number, stars: Array<{ rating: number; domRef: any; left: number; right: number }>): number  => {
     let min = 0;
     let max = stars.length - 1;
     let guess;

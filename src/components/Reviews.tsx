@@ -7,10 +7,13 @@ import reviews from '../../assets/reviews';
 const ratings = importAllAsArray(require.context('../../assets/images/stars', false, /\.(jpe?g|png|gif|svg)$/));
 const reviewerPortraits = importAllAsObject(require.context('../../assets/images/reviewers', false, /\.(jpe?g|png|gif|svg)$/));
 
-const Reviews = (props) => (
+interface IReviewsProps {
+    updateScore: (missed: boolean) => void
+}
+
+const Reviews = (props: IReviewsProps) => (
     <div className="reviews-container">
         {
-            // TODO: correctly bind reviews to portraits
             reviews.map((review, idx) => <Review
                 key={idx}
                 reviewerPortrait={reviewerPortraits[generatePortraitKey(review, 'png')]}
