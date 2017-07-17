@@ -11,7 +11,7 @@ interface IReviewProps {
 }
 
 interface IReviewState {
-    stars: Array<{ rating: number; domRef: any; left: number; right: number }> // TODO: domRef is not any
+    stars: Array<IRating>
     currentStar: number
 }
 
@@ -22,7 +22,7 @@ export default class Review extends Component<IReviewProps, IReviewState> {
         realRatingRef?: HTMLImageElement;
     };
 
-    private ratingRefs: Array<any> = new Array(this.props.ratings.length);
+    private ratingRefs: Array<HTMLImageElement> = new Array(this.props.ratings.length);
     private appearanceTimer: number;
 
     constructor(props: IReviewProps) {
@@ -72,9 +72,9 @@ export default class Review extends Component<IReviewProps, IReviewState> {
             this.setState((prevState, props) => ({
                 stars: prevState.stars.map(star => {
                     if (star.rating === (newStar + 1)) {
-                        star.domRef.style.zIndex = 1;
+                        star.domRef.style.zIndex = '1';
                     } else {
-                        star.domRef.style.zIndex = 0;
+                        star.domRef.style.zIndex = '0';
                     }
                     return star;
                 }),
