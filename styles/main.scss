@@ -1,8 +1,12 @@
-// TODO: add resets
 @import "mixins";
 
 $containers-per-row: 4;
 $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
+
+html, body, div {
+  padding: 0;
+  margin: 0;
+}
 
 .game-info {
   height: 50px;
