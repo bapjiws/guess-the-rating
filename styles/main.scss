@@ -50,7 +50,7 @@ html, body, div {
     }
 
     &.correct-guess {
-      @include animated-box-shadow(blue);
+      @include animated-box-shadow(green);
     }
 
     .review-header {
