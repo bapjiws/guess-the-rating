@@ -85,7 +85,6 @@ export default class Review extends Component<IReviewProps, IReviewState> {
 
     handleClick(event: any) {
         this.handleMouseMove = (event: any): void => {};
-        this.props.updateScore(this.props.review.starRating !== this.state.currentStar+1);
 
         // Another option might be https://github.com/JedWatson/classnames
         if (this.domRefs.ratingContainerRef) {this.domRefs.ratingContainerRef.className += ' clicked'};
@@ -94,6 +93,8 @@ export default class Review extends Component<IReviewProps, IReviewState> {
 
     // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions#Detecting_the_completion_of_a_transition
     handleTransitionEnd(event: any) {
+        this.props.updateScore(this.props.review.starRating !== this.state.currentStar+1);
+
         // Another option might be https://github.com/JedWatson/classnames
         if (+this.props.review.starRating !== this.state.currentStar+1) {
             if (this.domRefs.reviewContainerRef) {this.domRefs.reviewContainerRef.className += ' incorrect-guess'};
