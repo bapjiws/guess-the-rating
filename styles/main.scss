@@ -32,13 +32,22 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
 
     margin: 10px 10px;
     padding: 10px 10px;
-    border: 1px solid black;
+    border: 1px solid #bdbdb2;
+    border-radius: 5px;
     box-shadow: 0 0 5px 3px white;
 
     opacity: 0;
     transition-property: opacity;
     transition-duration: 1s;
     transition-timing-function: linear;
+
+    &.incorrect-guess {
+      @include animated-box-shadow(red);
+    }
+
+    &.correct-guess {
+      @include animated-box-shadow(blue);
+    }
 
     .review-header {
       display: flex;
@@ -76,14 +85,6 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
 
           &.clicked {
             transform: rotateY(180deg);
-          }
-
-          &.incorrect-guess {
-            @include animated-box-shadow(red);
-          }
-
-          &.correct-guess {
-            @include animated-box-shadow(blue);
           }
 
           img { // size: 260 x 48

@@ -96,9 +96,9 @@ export default class Review extends Component<IReviewProps, IReviewState> {
     handleTransitionEnd(event: any) {
         // Another option might be https://github.com/JedWatson/classnames
         if (+this.props.review.starRating !== this.state.currentStar+1) {
-            if (this.domRefs.ratingContainerRef) {this.domRefs.ratingContainerRef.className += ' incorrect-guess'};
+            if (this.domRefs.reviewContainerRef) {this.domRefs.reviewContainerRef.className += ' incorrect-guess'};
         } else {
-            if (this.domRefs.ratingContainerRef) {this.domRefs.ratingContainerRef.className += ' correct-guess'};
+            if (this.domRefs.reviewContainerRef) {this.domRefs.reviewContainerRef.className += ' correct-guess'};
         }
     }
 
