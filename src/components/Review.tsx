@@ -56,7 +56,7 @@ export default class Review extends Component<IReviewProps, IReviewState> {
             // console.log('stars:', stars);
 
             this.setState({ stars });
-        }, 100 * this.props.appearanceDelay); // TODO: set to 500 when finished debugging
+        }, 500 * this.props.appearanceDelay);
     }
 
     componentWillUnmount() {
