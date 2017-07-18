@@ -12,6 +12,17 @@ interface IAppState {
     numOfGuesses: number
 }
 
+let numOfGuesses: number = 0;
+// https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload
+window.addEventListener("beforeunload", function (e) {
+    if (numOfGuesses > 0 && numOfGuesses !== 5) {
+        const confirmationMessage = "\o/";
+
+        e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+        return confirmationMessage;              // Gecko, WebKit, Chrome <34
+    }
+});
+
 export default class App extends Component<IAppProps, IAppState> {
     constructor(props: IAppProps) {
         super(props);
@@ -33,6 +44,7 @@ export default class App extends Component<IAppProps, IAppState> {
                 numOfGuesses: prevState.numOfGuesses + 1
             }))
         }
+        numOfGuesses += 1;
     }
 
     render() {
