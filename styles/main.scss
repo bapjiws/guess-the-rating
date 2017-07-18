@@ -19,6 +19,15 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
   .review-container {
     width: 100% / $containers-per-row;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border: 1px solid black;
+    box-shadow: 0 0 5px 3px white;
+
     opacity: 0;
     transition-property: opacity;
     transition-duration: 1s;
@@ -39,6 +48,8 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
         .review-author {
           width: 100%;
           @include flexbox-with-centered-content;
+          padding: 0 7px;
+          text-align: center;
           font-family: $font-stack;
         }
 
@@ -99,16 +110,12 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
       font-weight: 700;
       text-align: center;
 
-      box-sizing: border-box;
-      padding: 10px;
+      padding: 10px 0;
     }
 
     .review-body {
       height: 90px;
       overflow: auto;
-
-      box-sizing: border-box;
-      padding: 5px 15px;
 
       font-family: $font-stack;
       font-size: 14px;
