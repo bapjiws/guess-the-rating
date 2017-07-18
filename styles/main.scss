@@ -19,6 +19,12 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
 
   .review-container {
     width: 100% / $containers-per-row;
+    @include bp(bp-phone) {
+      width: 100%;
+    }
+    @include bp(bp-tablet) {
+      width: 40%;
+    }
 
     display: flex;
     flex-direction: column;

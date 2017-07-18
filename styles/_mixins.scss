@@ -1,3 +1,5 @@
+$MQs: true;
+
 @mixin flexbox-with-centered-content() {
   display: flex;
   justify-content: center;
@@ -10,4 +12,18 @@
   transition-property: box-shadow;
   transition-timing-function: linear;
   transition-duration: 1s;
+}
+
+@mixin bp($point) {
+  @if ($MQs) {
+    $bp-phone: "only screen and (max-device-width : 479px)";
+    $bp-tablet: "only screen and (min-device-width : 480px) and (max-device-width : 768px)";
+
+    @if $point == bp-phone {
+      @media #{$bp-phone} { @content; }
+    }
+    @else if $point == bp-tablet {
+      @media #{$bp-tablet} { @content; }
+    }
+  }
 }
