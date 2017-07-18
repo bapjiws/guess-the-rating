@@ -15,6 +15,7 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
 .reviews-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   .review-container {
     width: 100% / $containers-per-row;
