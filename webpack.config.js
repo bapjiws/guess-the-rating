@@ -43,7 +43,7 @@ if (inProductionMode) {
 module.exports = {
     entry: inProductionMode ? {
         bundle: './src/index.tsx',
-        vendor: ['react', 'react-dom'] // TODO: add more stuff here, e.g., typescript
+        vendor: ['react', 'react-dom']
     } : [
         'react-hot-loader/patch',
         'webpack-hot-middleware/client',

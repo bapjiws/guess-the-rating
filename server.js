@@ -19,25 +19,15 @@ if (!inProductionMode) {
     app.use(webpackDevMiddleware);
     app.use(webpackHotMiddleware);
 
-    const bundlePath = path.join(__dirname, './build/index.html');
     app.get('/', (req, res) =>  {
-        res.write(webpackDevMiddleware.fileSystem.readFileSync(bundlePath));
+        res.write(webpackDevMiddleware.fileSystem.readFileSync(path.join(__dirname, './build/index.html')));
         res.end();
     });
-
-    app.get('*', (req, res) => {
-        res.send('NOT HERE');
-    });
 } else {
+    // https://github.com/expressjs/compression
+    const compression = require('compression');
+    app.use(compression());
     app.use(express.static(path.join(__dirname, 'build')));
-
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, 'build/index.html'));
-    });
-
-    app.get('*', (req, res) => {
-        res.send('NOT HERE');
-    });
 }
 
 const port = process.env.PORT || 8080;
