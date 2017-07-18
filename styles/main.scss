@@ -88,7 +88,7 @@ html, body, div {
           box-shadow: 0 0 5px 3px white;
 
           &.clicked {
-            transform: rotateY(180deg);
+            transform: rotateX(180deg);
           }
 
           img { // size: 260 x 48
@@ -102,7 +102,7 @@ html, body, div {
             }
 
             &.real-rating {
-              transform: rotateY(180deg);
+              transform: rotateX(180deg);
               color: white;
 
               &.clicked {
