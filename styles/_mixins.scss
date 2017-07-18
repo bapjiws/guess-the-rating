@@ -4,11 +4,10 @@
   align-items: center;
 }
 
-@mixin animated-border-color($border-color) {
-  border: 2px solid $border-color;
-  border-radius: 4px;
-
-  transition-property: border;
-  transition-duration: 2s;
+@mixin animated-box-shadow($color) {
+  // box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
+  box-shadow: 0 0 5px 3px $color;
+  transition-property: box-shadow;
   transition-timing-function: linear;
+  transition-duration: 1s;
 }

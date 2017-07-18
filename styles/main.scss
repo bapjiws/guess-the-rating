@@ -57,18 +57,18 @@ $font-stack: Helvetica Neue,Arial,Helvetica,sans-serif;
           transition-duration: 1s;
           transition-timing-function: linear;
 
-          border: 2px solid white;
+          box-shadow: 0 0 5px 3px white;
 
           &.clicked {
             transform: rotateY(180deg);
           }
 
           &.incorrect-guess {
-            @include animated-border-color(red);
+            @include animated-box-shadow(red);
           }
 
           &.correct-guess {
-            @include animated-border-color(blue);
+            @include animated-box-shadow(blue);
           }
 
           img { // size: 260 x 48
