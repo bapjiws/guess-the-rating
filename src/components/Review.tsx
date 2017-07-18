@@ -12,7 +12,8 @@ interface IReviewProps {
 
 interface IReviewState {
     stars: Array<IRating>
-    currentStar: number
+    currentStar: number,
+    clicked: boolean
 }
 
 export default class Review extends Component<IReviewProps, IReviewState> {
@@ -20,7 +21,8 @@ export default class Review extends Component<IReviewProps, IReviewState> {
         super(props);
         this.state = {
             stars: [],
-            currentStar: 0
+            currentStar: 0,
+            clicked: false
         };
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -64,27 +66,31 @@ export default class Review extends Component<IReviewProps, IReviewState> {
     }
 
     handleMouseMove(event: any) {
-        let newStar = findStarByMousePosX(event.nativeEvent.offsetX, this.state.stars);
-        // console.log('posX, currentStar, newStar:', event.nativeEvent.offsetX, this.state.currentStar, newStar);
-        if (newStar !== this.state.currentStar) {
-            console.log('RESTACKING...');
+        if (!this.state.clicked) {
+            let newStar = findStarByMousePosX(event.nativeEvent.offsetX, this.state.stars);
+            // console.log('posX, currentStar, newStar:', event.nativeEvent.offsetX, this.state.currentStar, newStar);
+            if (newStar !== this.state.currentStar) {
+                console.log('RESTACKING...');
 
-            this.setState((prevState, props) => ({
-                stars: prevState.stars.map(star => {
-                    if (star.rating === (newStar + 1)) {
-                        star.domRef.style.zIndex = '1';
-                    } else {
-                        star.domRef.style.zIndex = '0';
-                    }
-                    return star;
-                }),
-                currentStar: newStar
-            }));
+                this.setState((prevState, props) => ({
+                    stars: prevState.stars.map(star => {
+                        if (star.rating === (newStar + 1)) {
+                            star.domRef.style.zIndex = '1';
+                        } else {
+                            star.domRef.style.zIndex = '0';
+                        }
+                        return star;
+                    }),
+                    currentStar: newStar
+                }));
+            }
         }
     };
 
     handleClick(event: any) {
-        this.handleMouseMove = (event: any): void => {};
+        this.setState({
+            clicked: true
+        });
 
         // Another option might be https://github.com/JedWatson/classnames
         if (this.domRefs.ratingContainerRef) {this.domRefs.ratingContainerRef.className += ' clicked'};
