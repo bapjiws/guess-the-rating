@@ -11,18 +11,15 @@ if (!inProductionMode) {
 
     // Webpack Dev Middleware: https://github.com/webpack/webpack-dev-middleware
     const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, {
-        noInfo: true, publicPath: webpackConfig.output.publicPath
+        noInfo: true,
+        publicPath: webpackConfig.output.publicPath
     });
+
     // Webpack Hot Middleware: https://github.com/glenjamin/webpack-hot-middleware
     const webpackHotMiddleware = require('webpack-hot-middleware')(compiler);
 
     app.use(webpackDevMiddleware);
     app.use(webpackHotMiddleware);
-
-    app.get('/', (req, res) =>  {
-        res.write(webpackDevMiddleware.fileSystem.readFileSync(path.join(__dirname, './build/index.html')));
-        res.end();
-    });
 } else {
     // https://github.com/expressjs/compression
     const compression = require('compression');
